@@ -1,0 +1,1 @@
+{"version":3,"sources":["app.scss"],"names":[],"mappings":"AAAA;EACI,gCAAgC,EACnC;;AAED;EACI,kBAAkB,EACrB;;AAED;EACI,oBAAoB,EACvB","file":"app.css","sourcesContent":["body {\n    font-family: 'Lato', sans-serif;\n}\n\n.fa-btn {\n    margin-right: 6px;\n}\n\nnav.navbar {\n    margin-bottom: 20px;\n}\n"],"sourceRoot":"/source/"}
