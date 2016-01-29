@@ -1,75 +1,81 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="card card-block">
+                    <h3 class="card-title">{{ trans('pages.register.title') }}</h3>
+                    <form class="card-block" role="form" method="POST" action="{{ url('/register') }}">
                         {!! csrf_field() !!}
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Name</label>
+                        <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} row">
+                            <label class="col-md-4 control-label" for="name">{{ trans('pages.register.name') }}</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                                <input id="name" type="text"
+                                       class="form-control{{ $errors->has('name') ? ' form-control-danger' : '' }}"
+                                       name="name" value="{{ old('name') }}">
 
                                 @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
+                                    <small class="text-danger">
+                                        {{ $errors->first('name') }}
+                                    </small>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">E-Mail Address</label>
+                        <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }} row">
+                            <label class="col-md-4 control-label"
+                                   for="email">{{ trans('pages.register.email') }}</label>
 
                             <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+                                <input id="email" type="email"
+                                       class="form-control{{ $errors->has('email') ? ' form-control-danger' : '' }}"
+                                       name="email" value="{{ old('email') }}">
 
                                 @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
+                                    <small class="text-danger">
+                                        {{ $errors->first('email') }}
+                                    </small>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Password</label>
+                        <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }} row">
+                            <label class="col-md-4 control-label"
+                                   for="password">{{ trans('pages.register.password') }}</label>
 
                             <div class="col-md-6">
-                                <input type="password" class="form-control" name="password">
+                                <input id="password"
+                                       type="password"
+                                       class="form-control{{ $errors->has('password') ? ' form-control-danger' : '' }}"
+                                       name="password">
 
                                 @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
+                                    <small class="text-danger">
+                                        {{ $errors->first('password') }}
+                                    </small>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Confirm Password</label>
+                        <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }} row">
+                            <label class="col-md-4 control-label"
+                                   for="password_confirmation">{{ trans('pages.register.password_confirmation') }}</label>
 
                             <div class="col-md-6">
-                                <input type="password" class="form-control" name="password_confirmation">
-
-                                @if ($errors->has('password_confirmation'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                    </span>
-                                @endif
+                                <input id="password_confirmation"
+                                       type="password"
+                                       class="form-control{{ $errors->has('password') ? ' form-control-danger' : '' }}"
+                                       name="password_confirmation">
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group row">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-user"></i>Register
+                                    <span class="fa fa-btn fa-user"></span> {{ trans('pages.register.register') }}
                                 </button>
                             </div>
                         </div>
@@ -78,5 +84,5 @@
             </div>
         </div>
     </div>
-</div>
+    </div>
 @endsection
