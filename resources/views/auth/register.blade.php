@@ -9,17 +9,17 @@
                     <form class="card-block" role="form" method="POST" action="{{ url('/register') }}">
                         {!! csrf_field() !!}
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} row">
-                            <label class="col-md-4 control-label" for="name">{{ trans('pages.register.name') }}</label>
+                        <div class="form-group{{ $errors->has('username') ? ' has-danger' : '' }} row">
+                            <label class="col-md-4 control-label" for="username">{{ trans('pages.register.username') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text"
-                                       class="form-control{{ $errors->has('name') ? ' form-control-danger' : '' }}"
-                                       name="name" value="{{ old('name') }}">
+                                <input id="username" type="text"
+                                       class="form-control{{ $errors->has('username') ? ' form-control-danger' : '' }}"
+                                       name="username" value="{{ old('username') }}">
 
-                                @if ($errors->has('name'))
+                                @if ($errors->has('username'))
                                     <small class="text-danger">
-                                        {{ $errors->first('name') }}
+                                        {{ $errors->first('username') }}
                                     </small>
                                 @endif
                             </div>

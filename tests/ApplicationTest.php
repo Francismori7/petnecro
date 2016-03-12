@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use PetNecro\Profile;
 use PetNecro\User;
 
 class ApplicationTest extends TestCase
@@ -37,9 +38,9 @@ class ApplicationTest extends TestCase
      */
     protected function login(array $attributes = [])
     {
-        $this->actingAs($this->user = $user = $this->createUser($attributes));
+        $this->actingAs($this->user = $this->createUser($attributes));
 
-        return $user;
+        return $this->user;
     }
 
     /**
@@ -48,7 +49,11 @@ class ApplicationTest extends TestCase
      */
     protected function createUser(array $attributes = [])
     {
-        return factory(User::class)->create($attributes);
+        /** @var User $user */
+        $user = factory(User::class)->create($attributes);
+        $user->profile()->create(factory(Profile::class)->make(['user_id' => $user->id])->toArray());
+
+        return $user->load('profile');
     }
 
     /** @test */
@@ -71,13 +76,14 @@ class ApplicationTest extends TestCase
     {
         $this->visit('/register')
             ->seeStatusCode(200)
-            ->see("Email")
-            ->see("Password");
+            ->see(trans('pages.register.username'))
+            ->see(trans('pages.register.email'))
+            ->see(trans('pages.register.password'));
 
         $this->login();
 
         $this->visit('/register')
-            ->dontSee("Email")
+            ->dontSee(trans('pages.register.email'))
             ->seePageIs('/');
     }
 }

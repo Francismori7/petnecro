@@ -11,7 +11,8 @@
     "php": ">=5.5.9",
     "laravel/framework": "5.2.*",
     "laravel/socialite": "^2.0",
-    "filp/whoops": "^2.0"
+    "filp/whoops": "^2.0",
+    "laravel/cashier": "~6.0"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",
@@ -21,7 +22,8 @@
     "symfony/dom-crawler": "3.0.*",
     "barryvdh/laravel-ide-helper": "2.1.*",
     "barryvdh/laravel-debugbar": "2.1.*",
-    "doctrine/dbal": "2.5.*"
+    "doctrine/dbal": "2.5.*",
+    "laravel/homestead": "^3.0"
   },
   "autoload": {
     "classmap": [
@@ -56,5 +58,7 @@
   },
   "config": {
     "preferred-install": "dist"
-  }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }

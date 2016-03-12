@@ -14,7 +14,7 @@ return [
 
     ],
     'dashboard' => [
-
+        'title' => 'Tableau de bord',
     ],
     'login' => [
         'title' => 'Connexion',
@@ -26,11 +26,11 @@ return [
     ],
     'register' => [
         'title' => 'Créer un compte',
-        'name' => 'Nom',
+        'username' => "Pseudo",
         'email' => 'E-mail',
         'password' => 'Mot de passe',
         'password_confirmation' => 'Mot de passe (confirmation)',
         'register' => "S'enregistrer",
-        'login' => "J'ai déja un compte",
+        'login' => "J'ai déjà un compte",
     ],
 ];

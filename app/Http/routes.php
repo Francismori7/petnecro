@@ -19,4 +19,9 @@ Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
     Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+
+    /* Dashboard - user info */
+    Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
+        Route::get('/', ['as' => 'index', 'uses' => 'DashboardController@index']);
+    });
 });

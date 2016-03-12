@@ -3,6 +3,7 @@
 namespace PetNecro;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Cashier\Billable;
 
 /**
  * PetNecro\User
@@ -17,13 +18,18 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class User extends Authenticatable
 {
+    use Billable;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'username',
+        'language',
+        'email',
+        'password',
     ];
 
     /**
@@ -32,6 +38,22 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
+
+    public function hasFilledProfile()
+    {
+        return !! $this->profile;
+    }
+
+    /**
+     * A user has a profile, but not as soon as he's registered.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
 }

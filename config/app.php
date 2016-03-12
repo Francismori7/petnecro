@@ -155,6 +155,7 @@ return [
         PetNecro\Providers\AuthServiceProvider::class,
         PetNecro\Providers\EventServiceProvider::class,
         PetNecro\Providers\RouteServiceProvider::class,
+        Laravel\Cashier\CashierServiceProvider::class,
 
         /*
          * Packages...
