@@ -44,7 +44,7 @@ class User extends Authenticatable
 
     public function hasFilledProfile()
     {
-        return !! $this->profile;
+        return !!$this->profile;
     }
 
     /**

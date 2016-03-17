@@ -10,7 +10,8 @@
                         {!! csrf_field() !!}
 
                         <div class="form-group{{ $errors->has('username') ? ' has-danger' : '' }} row">
-                            <label class="col-md-4 control-label" for="username">{{ trans('pages.register.username') }}</label>
+                            <label class="col-md-4 control-label"
+                                   for="username">{{ trans('pages.register.username') }}</label>
 
                             <div class="col-md-6">
                                 <input id="username" type="text"

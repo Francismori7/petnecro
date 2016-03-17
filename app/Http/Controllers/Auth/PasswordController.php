@@ -2,8 +2,8 @@
 
 namespace PetNecro\Http\Controllers\Auth;
 
-use PetNecro\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use PetNecro\Http\Controllers\Controller;
 
 class PasswordController extends Controller
 {
