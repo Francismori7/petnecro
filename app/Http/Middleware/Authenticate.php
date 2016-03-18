@@ -17,12 +17,20 @@ class Authenticate
      */
     public function handle($request, Closure $next, $guard = null)
     {
+        Auth::guard($guard)->user()->load('profile');
+
         if (Auth::guard($guard)->guest()) {
             if ($request->ajax() || $request->wantsJson()) {
                 return response('Unauthorized.', 401);
             } else {
                 return redirect()->guest('login');
             }
+        }
+
+        if (!Auth::guard($guard)->user()->hasFilledProfile() && !str_contains($request->route()->getName(),
+                'dashboard')
+        ) {
+            return redirect()->route('dashboard.edit');
         }
 
         return $next($request);

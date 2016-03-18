@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c7ef440672c4ab1683346ea03b96515d",
-    "content-hash": "b83f9e9613b9a4032f03abf52604d9d0",
+    "hash": "fb4158b3b9edda9cad261489cd2ac7f2",
+    "content-hash": "85bd81a2241bf6b31b77833833543ece",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -204,16 +204,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "a327942c50cbd62b25c6fbe08f173031ce25fbff"
+                "reference": "8da9523f07c62d56fe1cf36f8ae29b333afc181f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/a327942c50cbd62b25c6fbe08f173031ce25fbff",
-                "reference": "a327942c50cbd62b25c6fbe08f173031ce25fbff",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/8da9523f07c62d56fe1cf36f8ae29b333afc181f",
+                "reference": "8da9523f07c62d56fe1cf36f8ae29b333afc181f",
                 "shasum": ""
             },
             "require": {
@@ -221,7 +221,8 @@
             },
             "require-dev": {
                 "mockery/mockery": "0.9.*",
-                "phpunit/phpunit": "^4.8 || ^5.0"
+                "phpunit/phpunit": "^4.8 || ^5.0",
+                "symfony/var-dumper": "~3.0"
             },
             "suggest": {
                 "symfony/var-dumper": "Pretty print complex values better with var-dumper available",
@@ -259,7 +260,7 @@
                 "whoops",
                 "zf2"
             ],
-            "time": "2016-01-06 17:51:21"
+            "time": "2016-03-13 10:22:39"
         },
         {
             "name": "guzzle/guzzle",
@@ -671,16 +672,16 @@
         },
         {
             "name": "laravel/cashier",
-            "version": "v6.0.8",
+            "version": "v6.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/cashier.git",
-                "reference": "f1ee722b3e1ba4ae74e6277afa4f93fe03b9003b"
+                "reference": "a0b6795b86224f31161ea000b75b8c7f3e810761"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/cashier/zipball/f1ee722b3e1ba4ae74e6277afa4f93fe03b9003b",
-                "reference": "f1ee722b3e1ba4ae74e6277afa4f93fe03b9003b",
+                "url": "https://api.github.com/repos/laravel/cashier/zipball/a0b6795b86224f31161ea000b75b8c7f3e810761",
+                "reference": "a0b6795b86224f31161ea000b75b8c7f3e810761",
                 "shasum": ""
             },
             "require": {
@@ -727,20 +728,20 @@
                 "laravel",
                 "stripe"
             ],
-            "time": "2016-03-04 22:30:54"
+            "time": "2016-03-15 16:02:37"
         },
         {
             "name": "laravel/framework",
-            "version": "v5.2.22",
+            "version": "v5.2.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "aec1b7cb9ec0bac0107361a3730cac9b6f945ef4"
+                "reference": "87c090845f135ca94eba903f1c8462e60e3a6e36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/aec1b7cb9ec0bac0107361a3730cac9b6f945ef4",
-                "reference": "aec1b7cb9ec0bac0107361a3730cac9b6f945ef4",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/87c090845f135ca94eba903f1c8462e60e3a6e36",
+                "reference": "87c090845f135ca94eba903f1c8462e60e3a6e36",
                 "shasum": ""
             },
             "require": {
@@ -855,7 +856,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-02-27 22:09:19"
+            "time": "2016-03-14 14:22:33"
         },
         {
             "name": "laravel/socialite",
@@ -912,17 +913,71 @@
             "time": "2015-10-16 15:39:46"
         },
         {
-            "name": "league/flysystem",
-            "version": "1.0.18",
+            "name": "laravelcollective/html",
+            "version": "v5.2.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "b334d6c5f95364948e06d2f620ab93d084074c6e"
+                "url": "https://github.com/LaravelCollective/html.git",
+                "reference": "3a312d39ffe37da0f57b602618b61fd07c1fcec5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/b334d6c5f95364948e06d2f620ab93d084074c6e",
-                "reference": "b334d6c5f95364948e06d2f620ab93d084074c6e",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/3a312d39ffe37da0f57b602618b61fd07c1fcec5",
+                "reference": "3a312d39ffe37da0f57b602618b61fd07c1fcec5",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/http": "5.2.*",
+                "illuminate/routing": "5.2.*",
+                "illuminate/session": "5.2.*",
+                "illuminate/support": "5.2.*",
+                "illuminate/view": "5.2.*",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "illuminate/database": "5.2.*",
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Collective\\Html\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                },
+                {
+                    "name": "Adam Engebretson",
+                    "email": "adam@laravelcollective.com"
+                }
+            ],
+            "description": "HTML and Form Builders for the Laravel Framework",
+            "homepage": "http://laravelcollective.com",
+            "time": "2016-01-27 22:29:54"
+        },
+        {
+            "name": "league/flysystem",
+            "version": "1.0.20",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/flysystem.git",
+                "reference": "e87a786e3ae12a25cf78a71bb07b4b384bfaa83a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/e87a786e3ae12a25cf78a71bb07b4b384bfaa83a",
+                "reference": "e87a786e3ae12a25cf78a71bb07b4b384bfaa83a",
                 "shasum": ""
             },
             "require": {
@@ -992,7 +1047,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2016-03-07 21:01:43"
+            "time": "2016-03-14 21:54:11"
         },
         {
             "name": "league/oauth1-client",
@@ -1059,16 +1114,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.18.0",
+            "version": "1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "e19b764b5c855580e8ffa7e615f72c10fd2f99cc"
+                "reference": "a5f2734e8c16f3aa21b3da09715d10e15b4d2d45"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/e19b764b5c855580e8ffa7e615f72c10fd2f99cc",
-                "reference": "e19b764b5c855580e8ffa7e615f72c10fd2f99cc",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/a5f2734e8c16f3aa21b3da09715d10e15b4d2d45",
+                "reference": "a5f2734e8c16f3aa21b3da09715d10e15b4d2d45",
                 "shasum": ""
             },
             "require": {
@@ -1133,7 +1188,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2016-03-01 18:00:40"
+            "time": "2016-03-13 16:08:35"
         },
         {
             "name": "mtdowling/cron-expression",
@@ -1279,16 +1334,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v1.2.2",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "b3313b618f4edd76523572531d5d7e22fe747430"
+                "reference": "ff76e1a660669bb56ba74ba0583fd8d41417bf39"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/b3313b618f4edd76523572531d5d7e22fe747430",
-                "reference": "b3313b618f4edd76523572531d5d7e22fe747430",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/ff76e1a660669bb56ba74ba0583fd8d41417bf39",
+                "reference": "ff76e1a660669bb56ba74ba0583fd8d41417bf39",
                 "shasum": ""
             },
             "require": {
@@ -1323,7 +1378,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2016-03-11 19:54:08"
+            "time": "2016-03-17 16:11:57"
         },
         {
             "name": "phenx/php-font-lib",
@@ -1520,16 +1575,16 @@
         },
         {
             "name": "stripe/stripe-php",
-            "version": "v3.9.2",
+            "version": "v3.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "ab77a057b656ace011b2033833d566f7e62666bf"
+                "reference": "e40211d1d5325d99d3ce167c9ee1ade0473a608a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/ab77a057b656ace011b2033833d566f7e62666bf",
-                "reference": "ab77a057b656ace011b2033833d566f7e62666bf",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/e40211d1d5325d99d3ce167c9ee1ade0473a608a",
+                "reference": "e40211d1d5325d99d3ce167c9ee1ade0473a608a",
                 "shasum": ""
             },
             "require": {
@@ -1571,7 +1626,7 @@
                 "payment processing",
                 "stripe"
             ],
-            "time": "2016-03-04 21:31:02"
+            "time": "2016-03-15 18:33:48"
         },
         {
             "name": "swiftmailer/swiftmailer",

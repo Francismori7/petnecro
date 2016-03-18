@@ -9,17 +9,17 @@
                     <form method="POST" action="{{ url('/login') }}" class="card-block">
                         {!! csrf_field() !!}
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }} row">
-                            <label class="col-md-4 control-label" for="email">{{ trans('pages.login.email') }}</label>
+                        <div class="form-group{{ $errors->has('username') ? ' has-danger' : '' }} row">
+                            <label class="col-md-4 control-label" for="username">{{ trans('pages.login.username') }}</label>
 
                             <div class="col-md-8">
-                                <input type="email"
-                                       class="form-control{{ $errors->has('email') ? ' form-control-danger' : '' }}"
-                                       name="email" id="email" value="{{ old('email') }}">
+                                <input type="text"
+                                       class="form-control{{ $errors->has('username') ? ' form-control-danger' : '' }}"
+                                       name="username" id="username" value="{{ old('username') }}">
 
-                                @if ($errors->has('email'))
+                                @if ($errors->has('username'))
                                     <small class="text-danger">
-                                        {{ $errors->first('email') }}
+                                        {{ $errors->first('username') }}
                                     </small>
                                 @endif
                             </div>
@@ -31,7 +31,7 @@
 
                             <div class="col-md-8">
                                 <input type="password" id="password"
-                                       class="form-control{{ $errors->has('email') ? ' form-control-danger' : '' }}"
+                                       class="form-control{{ $errors->has('password') ? ' form-control-danger' : '' }}"
                                        name="password">
 
                                 @if ($errors->has('password'))

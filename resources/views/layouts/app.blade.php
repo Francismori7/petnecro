@@ -13,7 +13,6 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css">
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
 </head>
 <body id="app-layout">
@@ -56,11 +55,14 @@
                         <li class="nav-item dropdown">
                             <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button"
                                aria-expanded="false">
-                                {{ Auth::user()->name }}<span class="caret"></span>
+                                {{ Auth::user()->hasFilledProfile() ? Auth::user()->profile->first_name : Auth::user()->username }}<span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" role="menu">
-                                <a class="dropdown-item" href="">
+                                <a class="dropdown-item" href="{{ route('dashboard.index') }}">
+                                    <span class="fa fa-btn fa-user"></span> Tableau de bord
+                                </a>
+                                <a class="dropdown-item" href="{{ url('/logout') }}">
                                     <span class="fa fa-btn fa-sign-out"></span> {{ trans('pages.navbar.logout') }}
                                 </a>
                             </div>
@@ -74,7 +76,6 @@
     @yield('content')
 
             <!-- JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"></script>
+    <script src="{{ elixir('js/main.js') }}"></script>
 </body>
 </html>

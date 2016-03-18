@@ -61,13 +61,13 @@ class ApplicationTest extends TestCase
     {
         $this->visit('/login')
             ->seeStatusCode(200)
-            ->see(trans('pages.login.email'))// E-mail field
+            ->see(trans('pages.login.username'))// E-mail field
             ->see(trans('pages.login.password')); // Password field
 
         $this->login();
 
         $this->visit('/login')
-            ->dontSee(trans('pages.login.email'))
+            ->dontSee(trans('pages.login.username'))
             ->seePageIs('/');
     }
 

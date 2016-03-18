@@ -18,7 +18,7 @@ return [
     ],
     'login' => [
         'title' => 'Connexion',
-        'email' => 'E-mail',
+        'username' => 'Pseudo',
         'password' => 'Mot de passe',
         'remember' => 'Se souvenir de moi',
         'login' => 'Connexion',
@@ -26,7 +26,7 @@ return [
     ],
     'register' => [
         'title' => 'Créer un compte',
-        'username' => "Pseudo",
+        'username' => 'Pseudo',
         'email' => 'E-mail',
         'password' => 'Mot de passe',
         'password_confirmation' => 'Mot de passe (confirmation)',

@@ -1,14 +1,10 @@
 <ul class="nav nav-pills nav-stacked">
-    <li class="small text-uppercase">Compte</li>
-    <li class="nav-item">
-        <a class="nav-link {{ Request::route()->getName() === 'dashboard.index' ? 'active' : '' }}"
-           href="{{ route('dashboard.index') }}"><span class="fa fa-user fa-fw"></span> Aperçu</a>
-    </li>
+    <li class="subtitle">Profil</li>
     <li class="nav-item">
         <a class="nav-link {{ Request::route()->getName() === 'dashboard.edit' ? 'active' : '' }}"
-           href="/dashboard/edit"><span class="fa fa-cog fa-fw"></span> Modifier</a>
+           href="{{ route('dashboard.edit') }}"><span class="fa fa-cog fa-fw"></span> Modifier</a>
     </li>
-    <li class="small text-uppercase">Paiements</li>
+    <li class="subtitle">Paiements</li>
     <li class="nav-item">
         <a class="nav-link {{ Request::route()->getName() === 'dashboard.billing.index' ? 'active' : '' }}"
            href="#"><span class="fa fa-dollar fa-fw"></span> Aperçu</a>
@@ -25,7 +21,7 @@
         <a class="nav-link {{ Request::route()->getName() === 'dashboard.billing.creditcard' ? 'active' : '' }}"
            href="#"><span class="fa fa-credit-card fa-fw"></span> Carte de crédit</a>
     </li>
-    <li class="small text-uppercase">Autre</li>
+    <li class="subtitle">Autre</li>
     <li class="nav-item">
         <a class="nav-link bg-danger {{ Request::route()->getName() === 'dashboard.deactivate' ? 'active' : '' }}"
            href="#"><span class="fa fa-ban fa-fw"></span>Désactiver mon compte</a>
