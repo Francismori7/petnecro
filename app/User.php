@@ -77,4 +77,17 @@ class User extends Authenticatable
     {
         return $this->hasOne(Profile::class);
     }
+
+    /**
+     * Returns the profile picture link for the user.
+     *
+     * @see http://en.gravatar.com/site/implement/images/php/
+     *
+     * @param int $size
+     * @return string
+     */
+    public function gravatarLink($size = 100)
+    {
+        return 'https://www.gravatar.com/avatar/' . md5(strtolower(trim($this->email))) . '?d=retro&r=g&s=' . $size;
+    }
 }

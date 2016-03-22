@@ -15,8 +15,13 @@
                     <div class="card-block">
                         @if(Auth::user()->hasFilledProfile())
                             @php($profile = Auth::user()->profile)
+                            <div class="pull-md-right">
+                                <img src="{{ Auth::user()->gravatarLink() }}" class="img-circle img-responsive">
+                            </div>
+
                             <h4>{{ $profile->first_name }} {{ $profile->last_name }}</h4>
 
+                            {{--
                             <div class="row">
                                 <div class="col-md-3">
                                     Adresse:
@@ -30,14 +35,18 @@
                                     </address>
                                 </div>
                             </div>
+                            --}}
+                            <div class="clearfix">
+                                <br>
+                                <a href="{{ route('dashboard.edit') }}" class="btn btn-primary">Modifier mon profil</a>
+                            </div>
+
                         @else
                             <h4>{{ Auth::user()->username }}</h4>
 
-                            <div class="alert alert-info">
-                                <p>
+                            <div class="alert alert-info last clearfix">
                                     Votre profil utilisateur n'est pas encore configuré!
-                                    <a href="#" class="btn btn-sm btn-info">Configurer</a>
-                                </p>
+                                    <a href="#" class="btn btn-sm btn-info pull-right">Configurer mon profil</a>
                             </div>
                         @endif
                     </div>

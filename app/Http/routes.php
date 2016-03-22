@@ -24,7 +24,9 @@ Route::group(['middleware' => 'web'], function () {
     Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
         Route::get('/', ['as' => 'index', 'uses' => 'DashboardController@index']);
         Route::get('edit', ['as' => 'edit', 'uses' => 'DashboardController@edit']);
+        Route::get('edit/account', ['as' => 'edit.account', 'uses' => 'DashboardController@editAccount']);
         Route::post('/', ['as' => 'store', 'uses' => 'DashboardController@store']);
         Route::patch('/', ['as' => 'update', 'uses' => 'DashboardController@update']);
+        Route::patch('/account', ['as' => 'update.account', 'uses' => 'DashboardController@updateAccount']);
     });
 });

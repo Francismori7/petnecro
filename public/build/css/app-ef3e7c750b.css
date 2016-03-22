@@ -4908,10 +4908,16 @@ body {
 .fa-btn {
   margin-right: 6px; }
 
+.alert.last {
+  margin-bottom: 0; }
+
 nav.navbar {
   margin-bottom: 20px; }
 
 ul li.subtitle {
+  margin-top: 1em; }
+
+section h4.title {
   margin-top: 1em; }
 
 .page-header {

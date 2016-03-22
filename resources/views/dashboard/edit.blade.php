@@ -22,17 +22,41 @@
                             {{ Form::model($profile, ['route' => 'dashboard.update', 'method' => 'patch']) }}
                         @endif
 
-                        <h4>Nom</h4>
-                        <p class="text-muted">
-                            Comment vous appelez-vous?
-                        </p>
+                        <section>
+                            <h4>Photo</h4>
+                            <p class="text-muted">
+                                Nous utilisons <a href="https://fr.gravatar.com/">Gravatar</a> pour les photos de
+                                profil.
+                            </p>
 
-                        {{ Form::bsText('first_name', 'Prénom') }}
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <img src="{{ Auth::user()->gravatarLink() }}"
+                                         class="img-circle img-fluid">
+                                </div>
+                                <div class="col-md-9">
+                                    <a href="https://fr.gravatar.com/emails/"
+                                       class="btn btn-xs btn-info-outline"
+                                       target="_blank">Modifier</a>
+                                </div>
+                            </div>
+                        </section>
 
-                        {{ Form::bsText('last_name', 'Nom') }}
+                        <section>
+                            <h4 class="title">Nom</h4>
+                            <p class="text-muted">
+                                Comment vous appelez-vous?
+                            </p>
 
-                        <h4>Adresse personnelle</h4>
-                        <p class="text-muted">Votre addresse est seulement nécessaire lorsque vous prenez un abonnement
+                            {{ Form::bsText('first_name', 'Prénom') }}
+
+                            {{ Form::bsText('last_name', 'Nom') }}
+                        </section>
+
+                        {{--
+                        <section>
+                            <h4 class="title">Adresse personnelle</h4>
+                            <p class="text-muted">Votre addresse est seulement nécessaire lorsque vous prenez un abonnement
                             et est privée.</p>
 
                             {{ Form::bsText('address1', 'Adresse (ligne 1)') }}
@@ -46,8 +70,10 @@
                             {{ Form::bsText('zip', 'Code postal') }}
 
                             {{ Form::bsText('country', 'Pays') }}
+                        </section>
+                        --}}
 
-                            {{ Form::submit('Sauvegarder', ['class' => 'btn btn-lg btn-primary']) }}
+                        {{ Form::submit('Sauvegarder', ['class' => 'btn btn-lg btn-primary']) }}
 
                         {{ Form::close() }}
                     </div>

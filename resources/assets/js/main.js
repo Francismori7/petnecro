@@ -1,4 +1,4 @@
-import Vue from 'vue';
+import Vue from "vue";
 
 window.jQuery = window.$ = require('jquery');
 
