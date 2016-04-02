@@ -1,12 +1,12 @@
 <?php
 
-namespace PetNecro\Http\Controllers;
+namespace Animociel\Http\Controllers;
 
 use Illuminate\Contracts\Auth\Guard;
-use PetNecro\Http\Requests\StoreProfileRequest;
-use PetNecro\Http\Requests\UpdateAccountRequest;
-use PetNecro\Http\Requests\UpdateProfileRequest;
-use PetNecro\User;
+use Animociel\Http\Requests\StoreProfileRequest;
+use Animociel\Http\Requests\UpdateAccountRequest;
+use Animociel\Http\Requests\UpdateProfileRequest;
+use Animociel\User;
 
 class DashboardController extends Controller
 {

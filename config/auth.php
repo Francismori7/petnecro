@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => PetNecro\User::class,
+            'model' => Animociel\User::class,
         ],
 
         // 'users' => [

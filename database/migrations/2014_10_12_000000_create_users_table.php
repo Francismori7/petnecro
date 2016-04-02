@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('language', 2)->default('fr');
             $table->string('email')->unique();
             $table->string('password', 60);
+            $table->integer('maximum_pets')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

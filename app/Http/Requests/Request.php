@@ -1,6 +1,6 @@
 <?php
 
-namespace PetNecro\Http\Requests;
+namespace Animociel\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

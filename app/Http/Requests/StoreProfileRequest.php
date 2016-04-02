@@ -1,8 +1,8 @@
 <?php
 
-namespace PetNecro\Http\Requests;
+namespace Animociel\Http\Requests;
 
-use PetNecro\Http\Requests\Request;
+use Animociel\Http\Requests\Request;
 
 class StoreProfileRequest extends Request
 {

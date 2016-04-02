@@ -1,6 +1,6 @@
 <?php
 
-namespace PetNecro\Http\Middleware;
+namespace Animociel\Http\Middleware;
 
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as BaseVerifier;
 

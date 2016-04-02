@@ -28,17 +28,17 @@ $app = new Illuminate\Foundation\Application(
 
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,
-    PetNecro\Http\Kernel::class
+    Animociel\Http\Kernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
-    PetNecro\Console\Kernel::class
+    Animociel\Console\Kernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    PetNecro\Exceptions\Handler::class
+    Animociel\Exceptions\Handler::class
 );
 
 /*

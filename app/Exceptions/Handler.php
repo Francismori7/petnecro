@@ -1,6 +1,6 @@
 <?php
 
-namespace PetNecro\Exceptions;
+namespace Animociel\Exceptions;
 
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;

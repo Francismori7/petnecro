@@ -1,9 +1,9 @@
 <?php
 
-namespace PetNecro\Http\Requests;
+namespace Animociel\Http\Requests;
 
-use PetNecro\Http\Requests\Request;
-use PetNecro\User;
+use Animociel\Http\Requests\Request;
+use Animociel\User;
 
 class UpdateAccountRequest extends Request
 {

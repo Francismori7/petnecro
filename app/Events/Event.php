@@ -1,6 +1,6 @@
 <?php
 
-namespace PetNecro\Events;
+namespace Animociel\Events;
 
 abstract class Event
 {

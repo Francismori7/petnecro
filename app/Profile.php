@@ -1,11 +1,11 @@
 <?php
 
-namespace PetNecro;
+namespace Animociel;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * PetNecro\Profile
+ * Animociel\Profile
  *
  * @property integer $id
  * @property integer $user_id
@@ -19,19 +19,19 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $country
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @property-read \PetNecro\User $user
- * @method static \Illuminate\Database\Query\Builder|\PetNecro\Profile whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\PetNecro\Profile whereUserId($value)
- * @method static \Illuminate\Database\Query\Builder|\PetNecro\Profile whereFirstName($value)
- * @method static \Illuminate\Database\Query\Builder|\PetNecro\Profile whereLastName($value)
- * @method static \Illuminate\Database\Query\Builder|\PetNecro\Profile whereAddress1($value)
- * @method static \Illuminate\Database\Query\Builder|\PetNecro\Profile whereAddress2($value)
- * @method static \Illuminate\Database\Query\Builder|\PetNecro\Profile whereCity($value)
- * @method static \Illuminate\Database\Query\Builder|\PetNecro\Profile whereZip($value)
- * @method static \Illuminate\Database\Query\Builder|\PetNecro\Profile whereState($value)
- * @method static \Illuminate\Database\Query\Builder|\PetNecro\Profile whereCountry($value)
- * @method static \Illuminate\Database\Query\Builder|\PetNecro\Profile whereCreatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\PetNecro\Profile whereUpdatedAt($value)
+ * @property-read \Animociel\User $user
+ * @method static \Illuminate\Database\Query\Builder|\Animociel\Profile whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\Animociel\Profile whereUserId($value)
+ * @method static \Illuminate\Database\Query\Builder|\Animociel\Profile whereFirstName($value)
+ * @method static \Illuminate\Database\Query\Builder|\Animociel\Profile whereLastName($value)
+ * @method static \Illuminate\Database\Query\Builder|\Animociel\Profile whereAddress1($value)
+ * @method static \Illuminate\Database\Query\Builder|\Animociel\Profile whereAddress2($value)
+ * @method static \Illuminate\Database\Query\Builder|\Animociel\Profile whereCity($value)
+ * @method static \Illuminate\Database\Query\Builder|\Animociel\Profile whereZip($value)
+ * @method static \Illuminate\Database\Query\Builder|\Animociel\Profile whereState($value)
+ * @method static \Illuminate\Database\Query\Builder|\Animociel\Profile whereCountry($value)
+ * @method static \Illuminate\Database\Query\Builder|\Animociel\Profile whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\Animociel\Profile whereUpdatedAt($value)
  * @mixin \Eloquent
  */
 class Profile extends Model

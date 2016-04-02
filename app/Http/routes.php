@@ -28,5 +28,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::post('/', ['as' => 'store', 'uses' => 'DashboardController@store']);
         Route::patch('/', ['as' => 'update', 'uses' => 'DashboardController@update']);
         Route::patch('/account', ['as' => 'update.account', 'uses' => 'DashboardController@updateAccount']);
+
+        Route::get('subscription', ['as' => 'billing.subscription', 'uses' => 'SubscriptionController@index']);
     });
 });

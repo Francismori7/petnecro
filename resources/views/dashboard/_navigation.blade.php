@@ -15,7 +15,7 @@
     <li class="subtitle">Paiements</li>
     <li class="nav-item">
         <a class="nav-link {{ Request::route()->getName() === 'dashboard.billing.subscription' ? 'active' : '' }}"
-           href="#"><span class="fa fa-rocket fa-fw"></span> Souscription</a>
+           href="{{ route('dashboard.billing.subscription') }}"><span class="fa fa-rocket fa-fw"></span> Souscription</a>
     </li>
     <li class="nav-item">
         <a class="nav-link {{ Request::route()->getName() === 'dashboard.billing.invoices' ? 'active' : '' }}" href="#"><span

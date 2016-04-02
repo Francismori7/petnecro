@@ -1,11 +1,11 @@
 <?php
 
-namespace PetNecro\Http\Controllers\Auth;
+namespace Animociel\Http\Controllers\Auth;
 
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
-use PetNecro\Http\Controllers\Controller;
-use PetNecro\User;
+use Animociel\Http\Controllers\Controller;
+use Animociel\User;
 use Validator;
 
 class AuthController extends Controller
@@ -67,6 +67,7 @@ class AuthController extends Controller
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'maximum_pets' => 0,
         ]);
     }
 }

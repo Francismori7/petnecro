@@ -31,7 +31,7 @@
       "database"
     ],
     "psr-4": {
-      "PetNecro\\": "app/"
+      "Animociel\\": "app/"
     }
   },
   "autoload-dev": {

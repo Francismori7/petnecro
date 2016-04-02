@@ -11,9 +11,12 @@
 |
 */
 
-use PetNecro\User;
+use Animociel\Profile;
+use Animociel\User;
 
-$factory->define(PetNecro\User::class, function (Faker\Generator $faker) {
+/** @var Illuminate\Database\Eloquent\Factory $factory */
+
+$factory->define(User::class, function (Faker\Generator $faker) {
     $faker->seed($faker->numberBetween(0, 2000));
 
     return [
@@ -25,7 +28,7 @@ $factory->define(PetNecro\User::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(PetNecro\Profile::class, function (Faker\Generator $faker) {
+$factory->define(Profile::class, function (Faker\Generator $faker) {
     $user = User::orderBy('id', 'desc')->first();
 
     $faker->seed($faker->numberBetween(0, 2000));

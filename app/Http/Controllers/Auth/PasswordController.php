@@ -1,9 +1,9 @@
 <?php
 
-namespace PetNecro\Http\Controllers\Auth;
+namespace Animociel\Http\Controllers\Auth;
 
 use Illuminate\Foundation\Auth\ResetsPasswords;
-use PetNecro\Http\Controllers\Controller;
+use Animociel\Http\Controllers\Controller;
 
 class PasswordController extends Controller
 {

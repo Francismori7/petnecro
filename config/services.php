@@ -30,7 +30,7 @@ return [
     ],
 
     'stripe' => [
-        'model' => PetNecro\User::class,
+        'model' => Animociel\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],

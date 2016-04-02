@@ -151,10 +151,10 @@ return [
         /*
          * Application Service Providers...
          */
-        PetNecro\Providers\AppServiceProvider::class,
-        PetNecro\Providers\AuthServiceProvider::class,
-        PetNecro\Providers\EventServiceProvider::class,
-        PetNecro\Providers\RouteServiceProvider::class,
+        Animociel\Providers\AppServiceProvider::class,
+        Animociel\Providers\AuthServiceProvider::class,
+        Animociel\Providers\EventServiceProvider::class,
+        Animociel\Providers\RouteServiceProvider::class,
         Laravel\Cashier\CashierServiceProvider::class,
 
         /*

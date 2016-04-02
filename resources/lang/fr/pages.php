@@ -2,7 +2,7 @@
 
 return [
     'application' => [
-        'title' => 'PetNecro',
+        'title' => 'Animociel',
     ],
     'navbar' => [
         'home' => 'Accueil',

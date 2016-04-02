@@ -1,6 +1,6 @@
 <?php
 
-namespace PetNecro\Jobs;
+namespace Animociel\Jobs;
 
 use Illuminate\Bus\Queueable;
 

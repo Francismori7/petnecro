@@ -1,6 +1,6 @@
 <?php
 
-namespace PetNecro\Http\Controllers;
+namespace Animociel\Http\Controllers;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;

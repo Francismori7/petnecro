@@ -1,6 +1,6 @@
 <?php
 
-namespace PetNecro\Http\Controllers;
+namespace Animociel\Http\Controllers;
 
 class HomeController extends Controller
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace PetNecro\Providers;
+namespace Animociel\Providers;
 
 use Faker\Factory as FakerFactory;
 use Faker\Generator as FakerGenerator;
