@@ -1,5 +1,5 @@
 {
-  "name": "francismori7/petnecro",
+  "name": "francismori7/animociel",
   "description": "Pet Necrology",
   "keywords": [
     "pet",
@@ -9,22 +9,21 @@
   "type": "project",
   "require": {
     "php": ">=5.5.9",
-    "laravel/framework": "5.2.*",
+    "laravel/framework": "^5.2",
     "laravel/socialite": "^2.0",
     "filp/whoops": "^2.0",
-    "laravel/cashier": "~6.0",
-    "laravelcollective/html": "5.2.*"
+    "laravel/cashier": "^6.0",
+    "laravelcollective/html": "^5.2"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",
-    "mockery/mockery": "0.9.*",
+    "mockery/mockery": "~0.9",
     "phpunit/phpunit": "5.1.*",
     "symfony/css-selector": "3.0.*",
     "symfony/dom-crawler": "3.0.*",
     "barryvdh/laravel-ide-helper": "2.1.*",
     "barryvdh/laravel-debugbar": "2.1.*",
-    "doctrine/dbal": "2.5.*",
-    "laravel/homestead": "^3.0"
+    "doctrine/dbal": "2.5.*"
   },
   "autoload": {
     "classmap": [
@@ -47,13 +46,11 @@
       "php artisan key:generate"
     ],
     "post-install-cmd": [
-      "php artisan clear-compiled",
+      "Illuminate\\Foundation\\ComposerScripts::postInstall",
       "php artisan optimize"
     ],
-    "pre-update-cmd": [
-      "php artisan clear-compiled"
-    ],
     "post-update-cmd": [
+      "Illuminate\\Foundation\\ComposerScripts::postUpdate",
       "php artisan optimize"
     ]
   },
