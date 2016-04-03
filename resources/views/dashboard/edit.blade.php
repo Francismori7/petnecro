@@ -5,10 +5,10 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-offset-1 col-md-3">
+            <div class="col-md-offset-1 col-md-3 col-xs-12">
                 @include('dashboard._navigation')
             </div>
-            <div class="col-md-7">
+            <div class="col-md-7 col-xs-12">
                 <h2 class="page-header">Modifier votre profil</h2>
 
                 <div class="card">

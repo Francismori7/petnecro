@@ -114,4 +114,8 @@ class User extends Authenticatable
     {
         return $value;
     }
+
+    public function taxPercentage() {
+        return 14.97;
+    }
 }

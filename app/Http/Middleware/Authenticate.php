@@ -18,7 +18,7 @@ class Authenticate
     public function handle($request, Closure $next, $guard = null)
     {
         if (null !== Auth::guard($guard)->user()) {
-            Auth::guard($guard)->user()->load('profile');
+            Auth::guard($guard)->user()->load('subscriptions', 'profile');
         }
 
         if (Auth::guard($guard)->guest()) {

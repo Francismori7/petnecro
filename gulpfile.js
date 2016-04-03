@@ -17,4 +17,8 @@ elixir(function (mix) {
     mix.browserify('main.js');
 
     mix.version(['css/app.css', 'js/main.js']);
+
+    mix.browserSync({
+        proxy: 'animociel.app'
+    });
 });

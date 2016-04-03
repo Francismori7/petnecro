@@ -22,6 +22,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\Animociel\Pet whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\Animociel\Pet whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property integer $user_id
+ * @property-read \Animociel\User $user
+ * @method static \Illuminate\Database\Query\Builder|\Animociel\Pet whereUserId($value)
  */
 class Pet extends Model
 {

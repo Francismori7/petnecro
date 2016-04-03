@@ -33,6 +33,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\Animociel\Profile whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\Animociel\Profile whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read mixed $full_name
  */
 class Profile extends Model
 {
@@ -61,5 +62,15 @@ class Profile extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Returns the full name of the user.
+     *
+     * @return mixed
+     */
+    public function getFullNameAttribute()
+    {
+        return sprintf('%s %s', $this->first_name, $this->last_name ?? '');
     }
 }

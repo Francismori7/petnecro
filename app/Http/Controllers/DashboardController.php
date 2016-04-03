@@ -2,11 +2,14 @@
 
 namespace Animociel\Http\Controllers;
 
-use Illuminate\Contracts\Auth\Guard;
 use Animociel\Http\Requests\StoreProfileRequest;
 use Animociel\Http\Requests\UpdateAccountRequest;
 use Animociel\Http\Requests\UpdateProfileRequest;
+use Animociel\Jobs\CreateStripeCustomerForUser;
+use Animociel\Jobs\UpdateStripeCustomerForUser;
+use Animociel\Profile;
 use Animociel\User;
+use Illuminate\Contracts\Auth\Guard;
 
 class DashboardController extends Controller
 {
@@ -18,10 +21,15 @@ class DashboardController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Guard $auth)
     {
-        return view('dashboard.index');
-        //return redirect()->route('dashboard.edit');
+        /** @var User $user */
+        $user = $auth->user();
+        $profile = $user->profile;
+        $petsCount = $user->pets()->count();
+        $maxPetsCount = $user->maximum_pets;
+
+        return view('dashboard.index')->with(compact('user', 'profile', 'petsCount', 'maxPetsCount'));
     }
 
     public function edit(Guard $auth)
@@ -37,14 +45,23 @@ class DashboardController extends Controller
 
     public function store(StoreProfileRequest $request, Guard $auth)
     {
-        $auth->user()->profile()->create($request->all());
+        /** @var User $user */
+        $user = $auth->user();
 
+        $user->profile()->create($request->all());
+
+        $this->dispatch(new CreateStripeCustomerForUser($user));
+        
         return redirect()->intended('/dashboard/edit');
     }
 
     public function update(UpdateProfileRequest $request, Guard $auth)
     {
-        $auth->user()->profile()->update($request->except('_method', '_token'));
+        /** @var User $user */
+        $user = $auth->user();
+        $user->profile()->update($request->except('_method', '_token'));
+        
+        $this->dispatch(new UpdateStripeCustomerForUser($user));
 
         return redirect()->route('dashboard.edit');
     }
@@ -55,6 +72,8 @@ class DashboardController extends Controller
         $user = $auth->user();
 
         $user->fill($request->except('_method', '_token', 'password'));
+
+        $this->dispatch(new UpdateStripeCustomerForUser($user));
 
         if ($request->has('password')) {
             $user->fill([

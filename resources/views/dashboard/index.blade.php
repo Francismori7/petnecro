@@ -13,13 +13,12 @@
 
                 <div class="card">
                     <div class="card-block">
-                        @if(Auth::user()->hasFilledProfile())
-                            @php($profile = Auth::user()->profile)
+                    @if($user->hasFilledProfile())
                             <div class="pull-md-right">
-                                <img src="{{ Auth::user()->gravatarLink() }}" class="img-circle img-responsive">
+                                <img src="{{ $user->gravatarLink() }}" class="img-circle img-responsive">
                             </div>
 
-                            <h4>{{ $profile->first_name }} {{ $profile->last_name }}</h4>
+                            <h4>{{ $profile->full_name }}</h4>
 
                             <h5>Limites du compte</h5>
                             <div class="row">
@@ -30,9 +29,6 @@
                                                 Animaux
                                             </div>
                                             <div class="card-block">
-                                                @php($petsCount = Auth::user()->pets()->count())
-                                                @php($maxPetsCount = Auth::user()->maximum_pets)
-
                                                 <h4 class="{{ $petsCount < $maxPetsCount ? 'text-success' : 'text-danger' }}">
                                                     {{ $petsCount }} / {{ $maxPetsCount }}
                                                 </h4>
@@ -66,7 +62,7 @@
                             </div>
 
                         @else
-                            <h4>{{ Auth::user()->username }}</h4>
+                            <h4>{{ $user->username }}</h4>
 
                             <div class="alert alert-info last clearfix">
                                 Votre profil utilisateur n'est pas encore configuré!
