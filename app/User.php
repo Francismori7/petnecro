@@ -115,7 +115,13 @@ class User extends Authenticatable
         return $value;
     }
 
-    public function taxPercentage() {
+    public function taxPercentage()
+    {
         return 14.97;
+    }
+
+    public function preferredCurrency()
+    {
+        return 'cad';
     }
 }

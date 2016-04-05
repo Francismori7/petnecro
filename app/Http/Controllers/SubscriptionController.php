@@ -24,7 +24,7 @@ class SubscriptionController extends Controller
         /** @var User $user */
         $user = $auth->user();
 
-        $user->newSubscription('default', 'monthly')->quantity(3)->create();
+        //$user->newSubscription('default', 'monthly')->quantity(3)->create();
 
         return view('dashboard.billing.subscription')->with(compact('user'));
     }

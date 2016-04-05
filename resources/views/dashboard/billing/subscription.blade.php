@@ -20,6 +20,10 @@
                                 <p class="text-warning">Vous n'êtes pas actuellement souscrit à un plan.</p>
                             @else
                                 <p class="text-success">{{ $user->subscription() }}</p>
+                                @php($sub = Animociel\AvailableSubscription::where('identifier', $user->subscription()->stripe_plan)->first())))
+                                {{ $sub }}
+
+                                {{ $user->invoices() }}
                             @endif
                         </section>
 

@@ -2,7 +2,7 @@
 
 namespace Animociel\Console;
 
-use Animociel\AvailableSubscription;
+use Animociel\Jobs\Cron\RegenerateAvailablePlans;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        // Commands\Inspire::class,
+        Commands\RegenerateAvailablePlans::class,
     ];
 
     /**
@@ -25,20 +25,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->call(function () {
-            $plans = \Stripe\Plan::all()->__toArray(true)['data'];
-
-            AvailableSubscription::truncate();
-
-            $count = 0;
-
-            foreach($plans as $plan) {
-                $plan['identifier'] = $plan['id'];
-                AvailableSubscription::create($plan);
-                $count++;
-            }
-
-            \Log::info("Removed and regenerated $count plans.");
-        })->everyThirtyMinutes();
+        $schedule->command('billing:plans')->twiceDaily(0, 12);
     }
 }
