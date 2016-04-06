@@ -19,7 +19,7 @@
     </li>
     <li class="nav-item">
         <a class="nav-link {{ Request::route()->getName() === 'dashboard.billing.invoices' ? 'active' : '' }}" href="#"><span
-                    class="fa fa-file fa-fw"></span> Paiements</a>
+                    class="fa fa-file fa-fw"></span> Factures</a>
     </li>
     <li class="nav-item">
         <a class="nav-link {{ Request::route()->getName() === 'dashboard.billing.creditcard' ? 'active' : '' }}"

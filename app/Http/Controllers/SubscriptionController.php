@@ -23,13 +23,23 @@ class SubscriptionController extends Controller
     {
         /** @var User $user */
         $user = $auth->user();
+        $subscription = $user->subscription();
+        $stripeSubscription = $subscription->asStripeSubscription();
+        $availableSubscriptions = AvailableSubscription::all();
 
         //$user->newSubscription('default', 'monthly')->quantity(3)->create();
 
-        return view('dashboard.billing.subscription')->with(compact('user'));
+        return view('dashboard.billing.subscription')->with(compact('user', 'subscription', 'stripeSubscription', 'availableSubscriptions'));
     }
-    
+
     public function update(Request $request) {
-        
+
+    }
+
+    public function invoices(Request $request) {
+        return $request->user()->invoices()[0]->view([
+            'vendor'  => 'Animociel',
+            'product' => 'Votre souscription',
+        ]);
     }
 }

@@ -32,5 +32,6 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('subscription', ['as' => 'billing.subscription', 'uses' => 'SubscriptionController@index']);
         Route::patch('subscription',
             ['as' => 'billing.subscription.update', 'uses' => 'SubscriptionController@update']);
+        Route::get('invoices', ['as' => 'billing.invoices', 'uses' => 'SubscriptionController@invoices']);
     });
 });

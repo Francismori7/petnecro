@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Invoice</title>
+    <title>Facture</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -75,13 +75,13 @@
             </tr>
             <tr valign="top">
                 <td style="font-size:28px;color:#cccccc;">
-                    Receipt
+                    REÇU
                 </td>
 
                 <!-- Organization Name / Date -->
                 <td>
                     <br><br>
-                    <strong>To:</strong> {{ $user->email }}
+                    <strong>À:</strong> {{ $user->email }}
                     <br>
                     <strong>Date:</strong> {{ $invoice->date()->toFormattedDateString() }}
                 </td>
@@ -106,8 +106,8 @@
                 <td>
                     <!-- Invoice Info -->
                     <p>
-                        <strong>Product:</strong> {{ $product }}<br>
-                        <strong>Invoice Number:</strong> {{ $invoice->id }}<br>
+                        <strong>Description:</strong> {{ $product }}<br>
+                        <strong>Numéro de facture:</strong> {{ $invoice->id }}<br>
                     </p>
 
                     <!-- Extra / VAT Information -->
@@ -124,12 +124,12 @@
                         <tr>
                             <th align="left">Description</th>
                             <th align="right">Date</th>
-                            <th align="right">Amount</th>
+                            <th align="right">Montant</th>
                         </tr>
 
                         <!-- Existing Balance -->
                         <tr>
-                            <td>Starting Balance</td>
+                            <td>Balance initiale</td>
                             <td>&nbsp;</td>
                             <td>{{ $invoice->startingBalance() }}</td>
                         </tr>
@@ -145,8 +145,8 @@
                                     <!-- Display The Subscriptions -->
                             @foreach ($invoice->subscriptions() as $subscription)
                                 <tr>
-                                    <td>Subscription ({{ $subscription->quantity }})</td>
-                                    <td>{{ $subscription->startDate() }} - {{ $subscription->endDate() }}</td>
+                                    <td>{{ $subscription->quantity }} &times; {{ $subscription->plan->name }}</td>
+                                    <td>Du {{ $subscription->startDate() }} au {{ $subscription->endDate() }}</td>
                                     <td>{{ $subscription->total() }}</td>
                                 </tr>
                                 @endforeach
@@ -167,9 +167,14 @@
                                             <!-- Display The Final Total -->
                                     <tr style="border-top:2px solid #000;">
                                         <td>&nbsp;</td>
-                                        <td style="text-align: right;"><strong>Total</strong></td>
-                                        <td><strong>{{ $invoice->total() }}</strong></td>
+                                        <td style="text-align: right;"><strong>Taxes</strong></td>
+                                        <td><strong>{{ Laravel\Cashier\Cashier::formatAmount($invoice->tax) }}</strong></td>
                                     </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td style="text-align: right;"><strong>Total</strong></td>
+                                <td><strong>{{ $invoice->total() }}</strong></td>
+                            </tr>
                     </table>
                 </td>
             </tr>

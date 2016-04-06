@@ -1,4 +1,4 @@
-@import "node_modules/bootstrap/scss/bootstrap-flex";
+@import "node_modules/bootstrap/scss/bootstrap";
 
 @import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
 
@@ -32,4 +32,10 @@ section h4.title {
     margin-bottom: 1em;
     padding-bottom: 0.5em;
     border-bottom: 1px solid #e5e5e5;
+}
+
+.card-columns {
+    &.columns-2 {
+        column-count: 2;
+    }
 }
