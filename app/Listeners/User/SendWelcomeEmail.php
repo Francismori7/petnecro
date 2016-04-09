@@ -26,6 +26,6 @@ class SendWelcomeEmail implements ShouldQueue
      */
     public function handle(UserEvent $event)
     {
-        //
+        var_dump('Sending email to ' . $event->user->email);
     }
 }

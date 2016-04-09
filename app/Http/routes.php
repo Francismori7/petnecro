@@ -23,10 +23,10 @@ Route::group(['middleware' => 'web'], function () {
     /* Dashboard - user info */
     Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
         Route::get('/', ['as' => 'index', 'uses' => 'DashboardController@index']);
-        Route::get('edit', ['as' => 'edit', 'uses' => 'DashboardController@edit']);
+        Route::get('edit/profile', ['as' => 'edit.profile', 'uses' => 'DashboardController@editProfile']);
         Route::get('edit/account', ['as' => 'edit.account', 'uses' => 'DashboardController@editAccount']);
-        Route::post('/', ['as' => 'store', 'uses' => 'DashboardController@store']);
-        Route::patch('/', ['as' => 'update', 'uses' => 'DashboardController@update']);
+        Route::post('/profile', ['as' => 'store.profile', 'uses' => 'DashboardController@storeProfile']);
+        Route::patch('/profile', ['as' => 'update.profile', 'uses' => 'DashboardController@updateProfile']);
         Route::patch('/account', ['as' => 'update.account', 'uses' => 'DashboardController@updateAccount']);
 
         Route::get('subscription', ['as' => 'billing.subscription', 'uses' => 'SubscriptionController@index']);

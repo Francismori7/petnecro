@@ -17,9 +17,9 @@
                             <div class="alert alert-info">
                                 Vous devez compléter votre profil utilsateur pour utiliser le site web.
                             </div>
-                            {{ Form::open(['route' => 'dashboard.store']) }}
+                            {{ Form::open(['route' => 'dashboard.store.profile']) }}
                         @else
-                            {{ Form::model($profile, ['route' => 'dashboard.update', 'method' => 'patch']) }}
+                            {{ Form::model($profile, ['route' => 'dashboard.update.profile', 'method' => 'patch']) }}
                         @endif
 
                         <section>

@@ -6,178 +6,145 @@
     <title>Facture</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            background: #fff;
-            background-image: none;
-            font-size: 12px;
-        }
-
-        address {
-            margin-top: 15px;
-        }
-
-        h2 {
-            font-size: 28px;
-            color: #cccccc;
-        }
-
-        .container {
-            padding-top: 30px;
-        }
-
-        .invoice-head td {
-            padding: 0 8px;
-        }
-
-        .invoice-body {
-            background-color: transparent;
-        }
-
-        .logo {
-            padding-bottom: 10px;
-        }
-
-        .table th {
-            vertical-align: bottom;
-            font-weight: bold;
-            padding: 8px;
-            line-height: 20px;
-            text-align: left;
-        }
-
-        .table td {
-            padding: 8px;
-            line-height: 20px;
-            text-align: left;
-            vertical-align: top;
-            border-top: 1px solid #dddddd;
-        }
-
-        .well {
-            margin-top: 15px;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
 </head>
 
 <body>
     <div class="container">
-        <table style="margin-left: auto; margin-right: auto" width="550">
+        <div class="row">
+            <div class="col-xs-6"><h2>{{ $header or $vendor }}</h2></div>
+            <div class="col-xs-6 text-xs-right"><h2>FACTURE</h2></div>
+        </div>
+
+        <br>
+
+        <div class="card-deck-wrapper">
+            <div class="card-deck">
+                <div class="card">
+                    <div class="card-header">Détails de la facture</div>
+                    <div class="card-block">
+                        Facture: #{{ strtoupper(ltrim($invoice->id, 'in_')) }}<br>
+                        Description: {{ $product }}<br>
+                        Date: {{ $invoice->date()->toFormattedDateString() }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="card-deck-wrapper">
+            <div class="card-deck">
+                <div class="card">
+                    <div class="card-header">Vendeur</div>
+                    <div class="card-block">
+                        <h4>{{ $vendor }}</h4>
+                        @if (isset($street))
+                            {{ $street }}<br>
+                        @endif
+                        @if (isset($location))
+                            {{ $location }}<br>
+                        @endif
+                        @if (isset($phone))
+                            <strong>T:</strong> <a href="tel:{{ $phone }}">{{ $phone }}</a><br>
+                        @endif
+                        @if (isset($url))
+                            <a href="{{ $url }}">{{ $url }}</a>
+                        @endif
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">Client</div>
+                    <div class="card-block">
+                        <h4>{{ $user->profile->full_name }}</h4>
+                        @if (isset($user->profile->address1))
+                            {{ $user->profile->address1 }}<br>
+                        @endif
+                        @if (isset($user->profile->city))
+                            {{ $user->profile->city }}
+                        @endif
+                        @if (isset($user->profile->state))
+                            , {{ $user->profile->state }}
+                        @endif
+                        @if (isset($user->profile->zip))
+                            &nbsp;&nbsp;{{ $user->profile->zip }}
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <table class="table table-bordered">
+            <thead class="thead-default">
             <tr>
-                <td width="160">
-                    &nbsp;
-                </td>
-
-                <!-- Organization Name / Image -->
-                <td align="right">
-                    <strong>{{ $header or $vendor }}</strong>
-                </td>
+                <th width="60%">Description</th>
+                <th>Quantité</th>
+                <th>Prix</th>
+                <th>Sous-total</th>
             </tr>
-            <tr valign="top">
-                <td style="font-size:28px;color:#cccccc;">
-                    REÇU
-                </td>
-
-                <!-- Organization Name / Date -->
-                <td>
-                    <br><br>
-                    <strong>À:</strong> {{ $user->email }}
-                    <br>
-                    <strong>Date:</strong> {{ $invoice->date()->toFormattedDateString() }}
-                </td>
+            </thead>
+            <tbody>
+            <!-- Existing Balance -->
+            <tr>
+                <td colspan="3">Balance initiale</td>
+                <td>{{ $invoice->startingBalance() }}</td>
             </tr>
-            <tr valign="top">
-                <!-- Organization Details -->
-                <td style="font-size:9px;">
-                    {{ $vendor }}<br>
-                    @if (isset($street))
-                        {{ $street }}<br>
+            </tbody>
+
+            @if(count($invoice->invoiceItems()))
+                <tbody>
+                @foreach ($invoice->invoiceItems() as $item)
+                    <tr>
+                        <td colspan="3">{{ $item->description }}</td>
+                        <td>{{ $item->total() }}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+            @endif
+
+            @if(count($invoice->subscriptions()))
+                <tbody>
+                @foreach ($invoice->subscriptions() as $subscription)
+                    <tr>
+                        <td>Abonnement ({{ $subscription->plan->name }}) - Du {{ $subscription->startDate() }}
+                            au {{ $subscription->endDate() }}</td>
+                        <td>{{ $subscription->quantity }}</td>
+                        <td>{{ Laravel\Cashier\Cashier::formatAmount($subscription->plan->amount) }}</td>
+                        <td>{{ $subscription->total() }}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+            @endif
+
+            @if ($invoice->hasDiscount())
+                <tbody>
+                <tr>
+                    @if ($invoice->discountIsPercentage())
+                        <td colspan="3">{{ $invoice->coupon() }} (Réduction de {{ $invoice->percentOff() }}%)</td>
+                    @else
+                        <td colspan="3">{{ $invoice->coupon() }} (Réduction de {{ $invoice->amountOff() }})</td>
                     @endif
-                    @if (isset($location))
-                        {{ $location }}<br>
-                    @endif
-                    @if (isset($phone))
-                        <strong>T</strong> {{ $phone }}<br>
-                    @endif
-                    @if (isset($url))
-                        <a href="{{ $url }}">{{ $url }}</a>
-                    @endif
-                </td>
-                <td>
-                    <!-- Invoice Info -->
-                    <p>
-                        <strong>Description:</strong> {{ $product }}<br>
-                        <strong>Numéro de facture:</strong> {{ $invoice->id }}<br>
-                    </p>
+                    <td>-{{ $invoice->discount() }}</td>
+                </tr>
+                </tbody>
+            @endif
 
-                    <!-- Extra / VAT Information -->
-                    @if (isset($vat))
-                        <p>
-                            {{ $vat }}
-                        </p>
-                    @endif
-
-                    <br><br>
-
-                    <!-- Invoice Table -->
-                    <table width="100%" class="table" border="0">
-                        <tr>
-                            <th align="left">Description</th>
-                            <th align="right">Date</th>
-                            <th align="right">Montant</th>
-                        </tr>
-
-                        <!-- Existing Balance -->
-                        <tr>
-                            <td>Balance initiale</td>
-                            <td>&nbsp;</td>
-                            <td>{{ $invoice->startingBalance() }}</td>
-                        </tr>
-
-                        <!-- Display The Invoice Items -->
-                        @foreach ($invoice->invoiceItems() as $item)
-                            <tr>
-                                <td colspan="2">{{ $item->description }}</td>
-                                <td>{{ $item->total() }}</td>
-                            </tr>
-                            @endforeach
-
-                                    <!-- Display The Subscriptions -->
-                            @foreach ($invoice->subscriptions() as $subscription)
-                                <tr>
-                                    <td>{{ $subscription->quantity }} &times; {{ $subscription->plan->name }}</td>
-                                    <td>Du {{ $subscription->startDate() }} au {{ $subscription->endDate() }}</td>
-                                    <td>{{ $subscription->total() }}</td>
-                                </tr>
-                                @endforeach
-
-                                        <!-- Display The Discount -->
-                                @if ($invoice->hasDiscount())
-                                    <tr>
-                                        @if ($invoice->discountIsPercentage())
-                                            <td>{{ $invoice->coupon() }} ({{ $invoice->percentOff() }}% Off)</td>
-                                        @else
-                                            <td>{{ $invoice->coupon() }} ({{ $invoice->amountOff() }} Off)</td>
-                                        @endif
-                                        <td>&nbsp;</td>
-                                        <td>-{{ $invoice->discount() }}</td>
-                                    </tr>
-                                    @endif
-
-                                            <!-- Display The Final Total -->
-                                    <tr style="border-top:2px solid #000;">
-                                        <td>&nbsp;</td>
-                                        <td style="text-align: right;"><strong>Taxes</strong></td>
-                                        <td><strong>{{ Laravel\Cashier\Cashier::formatAmount($invoice->tax) }}</strong></td>
-                                    </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td style="text-align: right;"><strong>Total</strong></td>
-                                <td><strong>{{ $invoice->total() }}</strong></td>
-                            </tr>
-                    </table>
-                </td>
+            <tbody>
+            <tr>
+                <td colspan="3" class="text-xs-right"><strong>Sous-total:</strong></td>
+                <td><strong>{{ $invoice->subtotal() }}</strong></td>
             </tr>
+            <tr>
+                <td colspan="3" class="text-xs-right"><strong>Taxes ({{ $invoice->tax_percent }}%):</strong></td>
+                <td><strong>{{ Laravel\Cashier\Cashier::formatAmount($invoice->tax) }}</strong></td>
+            </tr>
+            <tr>
+                <td colspan="3" class="text-xs-right"><h3>Total:</h3></td>
+                <td><h3>{{ $invoice->total() }}</h3></td>
+            </tr>
+            </tbody>
         </table>
     </div>
 </body>

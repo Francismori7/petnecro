@@ -9,13 +9,12 @@ use Illuminate\Queue\InteractsWithQueue;
 class UpdateStripeCustomer implements ShouldQueue
 {
     use InteractsWithQueue;
-    
+
     /**
      * Create the event listener.
      */
     public function __construct()
     {
-        //
     }
 
     /**
@@ -26,6 +25,9 @@ class UpdateStripeCustomer implements ShouldQueue
      */
     public function handle(UserEvent $event)
     {
-        //
+        $customer = $event->user->asStripeCustomer();
+        $customer->email = $event->user->email;
+        $customer->description = "{$event->user->username} (" . $event->user->profile->full_name ?? 'Aucun profil' . ')';
+        $customer->save();
     }
 }

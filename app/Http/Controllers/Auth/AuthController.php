@@ -2,6 +2,7 @@
 
 namespace Animociel\Http\Controllers\Auth;
 
+use Animociel\Events\User\UserRegistered;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Animociel\Http\Controllers\Controller;
@@ -63,11 +64,15 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'maximum_pets' => 0,
         ]);
+
+        event(new UserRegistered($user));
+
+        return $user;
     }
 }

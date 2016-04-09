@@ -2,6 +2,8 @@
 
 namespace Animociel\Http\Controllers;
 
+use Animociel\Events\User\UserFilledProfile;
+use Animociel\Events\User\UserUpdatedProfile;
 use Animociel\Http\Requests\StoreProfileRequest;
 use Animociel\Http\Requests\UpdateAccountRequest;
 use Animociel\Http\Requests\UpdateProfileRequest;
@@ -27,14 +29,15 @@ class DashboardController extends Controller
         $user = $auth->user();
         $profile = $user->profile;
         $petsCount = $user->pets()->count();
-        $maxPetsCount = $user->maximum_pets;
+        $maxPetsCount = $user->subscription()->quantity;
 
         return view('dashboard.index')->with(compact('user', 'profile', 'petsCount', 'maxPetsCount'));
     }
 
-    public function edit(Guard $auth)
+    public function editProfile(Guard $auth)
     {
         $profile = $auth->user()->profile;
+
         return view('dashboard.edit')->with(compact('profile'));
     }
 
@@ -43,37 +46,58 @@ class DashboardController extends Controller
         return view('dashboard.editAccount');
     }
 
-    public function store(StoreProfileRequest $request, Guard $auth)
+    /**
+     * Create a profile for the current user.
+     *
+     * @event Animociel\Events\UserFilledProfile
+     * @param StoreProfileRequest $request
+     * @param Guard $auth
+     * @return mixed
+     */
+    public function storeProfile(StoreProfileRequest $request, Guard $auth)
     {
         /** @var User $user */
         $user = $auth->user();
 
         $user->profile()->create($request->all());
 
-        $this->dispatch(new CreateStripeCustomerForUser($user));
+        event(new UserFilledProfile($user));
         
         return redirect()->intended('/dashboard/edit');
     }
 
-    public function update(UpdateProfileRequest $request, Guard $auth)
+    /**
+     * User has requested to update his profile details.
+     *
+     * @param UpdateProfileRequest $request
+     * @param Guard $auth
+     * @return mixed
+     */
+    public function updateProfile(UpdateProfileRequest $request, Guard $auth)
     {
         /** @var User $user */
         $user = $auth->user();
+
         $user->profile()->update($request->except('_method', '_token'));
-        
-        $this->dispatch(new UpdateStripeCustomerForUser($user));
+
+        event(new UserUpdatedProfile($user));
 
         return redirect()->route('dashboard.edit');
     }
 
+    /**
+     * User has requested to update his account details.
+     *
+     * @param UpdateAccountRequest $request
+     * @param Guard $auth
+     * @return mixed
+     */
     public function updateAccount(UpdateAccountRequest $request, Guard $auth)
     {
         /** @var User $user */
         $user = $auth->user();
 
         $user->fill($request->except('_method', '_token', 'password'));
-
-        $this->dispatch(new UpdateStripeCustomerForUser($user));
 
         if ($request->has('password')) {
             $user->fill([
@@ -82,6 +106,8 @@ class DashboardController extends Controller
         }
 
         $user->save();
+
+        event(new UserUpdatedProfile($user));
 
         return redirect()->route('dashboard.edit.account');
     }

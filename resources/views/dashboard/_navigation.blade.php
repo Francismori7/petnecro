@@ -5,8 +5,8 @@
            href="{{ route('dashboard.index') }}"><span class="fa fa-search fa-fw"></span> Aperçu</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link {{ Request::route()->getName() === 'dashboard.edit' ? 'active' : '' }}"
-           href="{{ route('dashboard.edit') }}"><span class="fa fa-cog fa-fw"></span> Modifier le profil</a>
+        <a class="nav-link {{ Request::route()->getName() === 'dashboard.edit.profile' ? 'active' : '' }}"
+           href="{{ route('dashboard.edit.profile') }}"><span class="fa fa-cog fa-fw"></span> Modifier le profil</a>
     </li>
     <li class="nav-item">
         <a class="nav-link {{ Request::route()->getName() === 'dashboard.edit.account' ? 'active' : '' }}"
@@ -15,7 +15,7 @@
     <li class="subtitle">Paiements</li>
     <li class="nav-item">
         <a class="nav-link {{ Request::route()->getName() === 'dashboard.billing.subscription' ? 'active' : '' }}"
-           href="{{ route('dashboard.billing.subscription') }}"><span class="fa fa-rocket fa-fw"></span> Souscription</a>
+           href="{{ route('dashboard.billing.subscription') }}"><span class="fa fa-rocket fa-fw"></span> Abonnement</a>
     </li>
     <li class="nav-item">
         <a class="nav-link {{ Request::route()->getName() === 'dashboard.billing.invoices' ? 'active' : '' }}" href="#"><span

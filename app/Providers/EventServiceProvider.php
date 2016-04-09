@@ -23,6 +23,9 @@ class EventServiceProvider extends ServiceProvider
         'Animociel\Events\User\UserUpdatedProfile' => [
             'Animociel\Listeners\User\UpdateStripeCustomer',
         ],
+        'Animociel\Events\User\UserUpdatedAccount' => [
+            'Animociel\Listeners\User\UpdateStripeCustomer',
+        ],
     ];
 
     /**

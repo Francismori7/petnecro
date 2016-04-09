@@ -58,7 +58,7 @@
                             --}}
                             <div class="clearfix">
                                 <br>
-                                <a href="{{ route('dashboard.edit') }}" class="btn btn-primary">Modifier mon profil</a>
+                                <a href="{{ route('dashboard.edit.profile') }}" class="btn btn-primary">Modifier mon profil</a>
                             </div>
 
                         @else
@@ -66,7 +66,7 @@
 
                             <div class="alert alert-info last clearfix">
                                 Votre profil utilisateur n'est pas encore configuré!
-                                <a href="{{ route('dashboard.edit') }}" class="btn btn-sm btn-info pull-right">Configurer
+                                <a href="{{ route('dashboard.edit.profile') }}" class="btn btn-sm btn-info pull-right">Configurer
                                     mon profil</a>
                             </div>
                         @endif

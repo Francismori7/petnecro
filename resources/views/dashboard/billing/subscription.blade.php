@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Souscription')
+@section('title', 'Abonnement')
 
 @section('content')
     <div class="container">
@@ -9,21 +9,21 @@
                 @include('dashboard._navigation')
             </div>
             <div class="col-md-7 col-xs-12">
-                <h2 class="page-header">Souscription</h2>
+                <h2 class="page-header">Abonnement</h2>
 
                 <div class="card">
                     <div class="card-block">
                         <section>
-                            <h4>Souscription actuelle</h4>
+                            <h4>Abonnement actuel</h4>
 
                             @if(!$user->subscribed())
-                                <p class="text-warning">Vous n'êtes pas actuellement souscrit à un plan.</p>
+                                <p class="text-warning">Vous n'êtes pas actuellement abonné à un plan.</p>
                             @else
                                 <div class="col-md-8 col-md-offset-2">
                                     <div class="card card-block">
                                         <ul class="list-unstyled">
                                             <li>
-                                                <span class="h5"><strong>Souscription:</strong> {{ $stripeSubscription->plan->name }}</span>
+                                                <span class="h5"><strong>Abonnement:</strong> {{ $stripeSubscription->plan->name }}</span>
                                             </li>
                                             <li><strong><span class="fa fa-clock-o"></span> Débutée
                                                     le:</strong> {{ Carbon\Carbon::createFromTimestamp($stripeSubscription->start)->toFormattedDateString() }}
@@ -49,24 +49,24 @@
                                 @if($stripeSubscription->cancel_at_period_end)
                                     <div class="alert alert-danger">
                                         <p>
-                                            Votre souscription sera mise à terme
+                                            Votre abonnement sera mis à terme
                                             le {{ Carbon\Carbon::createFromTimestamp($stripeSubscription->current_period_end)->toFormattedDateString() }}
                                             .
                                         </p>
 
-                                        <p><a href="#" class="btn btn-primary">Réactiver ma souscription</a></p>
+                                        <p><a href="#" class="btn btn-primary">Réactiver mon abonnement</a></p>
                                     </div>
                                 @else
-                                    <a href="#" class="btn btn-danger">Annuler ma souscription</a>
+                                    <a href="#" class="btn btn-danger">Annuler mon abonnement</a>
                                 @endif
                             @endif
                         </section>
 
                         <section>
-                            <h4 class="title">Souscriptions disponibles</h4>
+                            <h4 class="title">Abonnements disponibles</h4>
 
                             <p class="text-muted">
-                                Vous pouvez choisir parmis les souscriptions suivantes.
+                                Vous pouvez choisir parmis les abonnements suivantes.
                             </p>
 
                             <div class="card-columns columns-2">
