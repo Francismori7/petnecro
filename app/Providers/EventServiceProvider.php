@@ -13,8 +13,15 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'Animociel\Events\SomeEvent' => [
-            'Animociel\Listeners\EventListener',
+        'Animociel\Events\User\UserRegistered' => [
+            'Animociel\Listeners\User\CreateStripeCustomer',
+            'Animociel\Listeners\User\SendWelcomeEmail',
+        ],
+        'Animociel\Events\User\UserFilledProfile' => [
+            'Animociel\Listeners\User\UpdateStripeCustomer',
+        ],
+        'Animociel\Events\User\UserUpdatedProfile' => [
+            'Animociel\Listeners\User\UpdateStripeCustomer',
         ],
     ];
 
