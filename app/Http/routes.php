@@ -32,6 +32,21 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('subscription', ['as' => 'billing.subscription', 'uses' => 'SubscriptionController@index']);
         Route::patch('subscription',
             ['as' => 'billing.subscription.update', 'uses' => 'SubscriptionController@update']);
-        Route::get('invoices', ['as' => 'billing.invoices', 'uses' => 'SubscriptionController@invoices']);
+        Route::patch('subscription/quantity',
+            ['as' => 'billing.subscription.updateQuantity', 'uses' => 'SubscriptionController@updateQuantity']);
+
+        Route::post('subscription/reactivate',
+            ['as' => 'billing.subscription.reactivate', 'uses' => 'SubscriptionController@reactivate']);
+        Route::delete('subscription',
+            ['as' => 'billing.subscription.destroy', 'uses' => 'SubscriptionController@destroy']);
+
+        Route::get('invoices', ['as' => 'billing.invoices.index', 'uses' => 'InvoiceController@index']);
+        Route::get('invoices/{invoice}', ['as' => 'billing.invoices.show', 'uses' => 'InvoiceController@show']);
+
+        Route::get('creditcard', ['as' => 'billing.creditcard.edit', 'uses' => 'CreditCardController@edit']);
+        Route::patch('creditcard', ['as' => 'billing.creditcard.update', 'uses' => 'CreditCardController@update']);
+
+        Route::get('discount', ['as' => 'billing.discount.edit', 'uses' => 'DiscountController@edit']);
+        Route::post('discount', ['as' => 'billing.discount.store', 'uses' => 'DiscountController@store']);
     });
 });

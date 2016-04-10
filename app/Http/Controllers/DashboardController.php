@@ -3,13 +3,11 @@
 namespace Animociel\Http\Controllers;
 
 use Animociel\Events\User\UserFilledProfile;
+use Animociel\Events\User\UserUpdatedAccount;
 use Animociel\Events\User\UserUpdatedProfile;
 use Animociel\Http\Requests\StoreProfileRequest;
 use Animociel\Http\Requests\UpdateAccountRequest;
 use Animociel\Http\Requests\UpdateProfileRequest;
-use Animociel\Jobs\CreateStripeCustomerForUser;
-use Animociel\Jobs\UpdateStripeCustomerForUser;
-use Animociel\Profile;
 use Animociel\User;
 use Illuminate\Contracts\Auth\Guard;
 
@@ -29,16 +27,18 @@ class DashboardController extends Controller
         $user = $auth->user();
         $profile = $user->profile;
         $petsCount = $user->pets()->count();
-        $maxPetsCount = $user->subscription()->quantity;
+        $maxPetsCount = $user->subscription()->quantity ?? 0;
 
         return view('dashboard.index')->with(compact('user', 'profile', 'petsCount', 'maxPetsCount'));
     }
 
     public function editProfile(Guard $auth)
     {
-        $profile = $auth->user()->profile;
+        /** @var User $user */
+        $user = $auth->user();
+        $profile = $user->profile;
 
-        return view('dashboard.edit')->with(compact('profile'));
+        return view('dashboard.edit')->with(compact('user', 'profile'));
     }
 
     public function editAccount(Guard $auth)
@@ -62,8 +62,8 @@ class DashboardController extends Controller
         $user->profile()->create($request->all());
 
         event(new UserFilledProfile($user));
-        
-        return redirect()->intended('/dashboard/edit');
+
+        return redirect()->intended('/dashboard/edit/profile');
     }
 
     /**
@@ -82,7 +82,7 @@ class DashboardController extends Controller
 
         event(new UserUpdatedProfile($user));
 
-        return redirect()->route('dashboard.edit');
+        return redirect()->route('dashboard.edit.profile');
     }
 
     /**
@@ -107,7 +107,7 @@ class DashboardController extends Controller
 
         $user->save();
 
-        event(new UserUpdatedProfile($user));
+        event(new UserUpdatedAccount($user));
 
         return redirect()->route('dashboard.edit.account');
     }

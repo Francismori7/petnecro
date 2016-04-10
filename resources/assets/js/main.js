@@ -1,5 +1,7 @@
 import Vue from "vue";
 
-window.jQuery = window.$ = require('jquery');
+window.$ = window.jQuery = require('jquery');
+
+require('jquery.payment');
 
 require('bootstrap/dist/js/npm');

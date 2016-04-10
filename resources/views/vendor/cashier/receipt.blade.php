@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-xs-6"><h2>{{ $header or $vendor }}</h2></div>
+            <div class="col-xs-6"><a href="{{ route('dashboard.billing.invoices.index') }}" class="btn btn-primary">Retour</a></div>
             <div class="col-xs-6 text-xs-right"><h2>FACTURE</h2></div>
         </div>
 
@@ -24,7 +24,9 @@
                     <div class="card-header">Détails de la facture</div>
                     <div class="card-block">
                         Facture: #{{ strtoupper(ltrim($invoice->id, 'in_')) }}<br>
-                        Description: {{ $product }}<br>
+                        @if(isset($product))
+                            Description: {{ $product }}<br>
+                        @endif
                         Date: {{ $invoice->date()->toFormattedDateString() }}
                     </div>
                 </div>
@@ -134,15 +136,15 @@
             <tbody>
             <tr>
                 <td colspan="3" class="text-xs-right"><strong>Sous-total:</strong></td>
-                <td><strong>{{ $invoice->subtotal() }}</strong></td>
+                <td><strong>{{ Laravel\Cashier\Cashier::formatAmount($invoice->subtotal - ($invoice->rawStartingBalance() * -1)) }}</strong></td>
             </tr>
             <tr>
-                <td colspan="3" class="text-xs-right"><strong>Taxes ({{ $invoice->tax_percent }}%):</strong></td>
+                <td colspan="3" class="text-xs-right"><strong>Taxes ({{ $invoice->tax_percent ?? 0 }}%):</strong></td>
                 <td><strong>{{ Laravel\Cashier\Cashier::formatAmount($invoice->tax) }}</strong></td>
             </tr>
             <tr>
                 <td colspan="3" class="text-xs-right"><h3>Total:</h3></td>
-                <td><h3>{{ $invoice->total() }}</h3></td>
+                <td><h3>{{ Laravel\Cashier\Cashier::formatAmount($invoice->total - ($invoice->rawStartingBalance() * -1)) }}</h3></td>
             </tr>
             </tbody>
         </table>

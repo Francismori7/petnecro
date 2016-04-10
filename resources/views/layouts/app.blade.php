@@ -75,7 +75,9 @@
 
     @yield('content')
 
-            <!-- JavaScript -->
+    <!-- JavaScript -->
     <script src="{{ elixir('js/main.js') }}"></script>
+
+    @stack('scripts')
 </body>
 </html>

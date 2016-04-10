@@ -25,7 +25,7 @@ class CreateStripeCustomer implements ShouldQueue
     public function handle(UserEvent $event)
     {
         $event->user->createAsStripeCustomer(null, [
-            'description' => "{$event->user->username} (" . $event->user->profile->full_name ?? 'Aucun profil' . ')',
+            'description' => "{$event->user->username} (" . ($event->user->profile->full_name ?? 'Aucun profil') . ')',
             'metadata' => [
                 'user_id' => $event->user->id,
             ],

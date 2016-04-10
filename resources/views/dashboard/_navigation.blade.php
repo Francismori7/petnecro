@@ -18,12 +18,16 @@
            href="{{ route('dashboard.billing.subscription') }}"><span class="fa fa-rocket fa-fw"></span> Abonnement</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link {{ Request::route()->getName() === 'dashboard.billing.invoices' ? 'active' : '' }}" href="#"><span
-                    class="fa fa-file fa-fw"></span> Factures</a>
+        <a class="nav-link {{ Request::route()->getName() === 'dashboard.billing.invoices.index' ? 'active' : '' }}"
+           href="{{ route('dashboard.billing.invoices.index') }}"><span class="fa fa-file fa-fw"></span> Factures</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link {{ Request::route()->getName() === 'dashboard.billing.creditcard' ? 'active' : '' }}"
-           href="#"><span class="fa fa-credit-card fa-fw"></span> Carte de crédit</a>
+        <a class="nav-link {{ Request::route()->getName() === 'dashboard.billing.creditcard.edit' ? 'active' : '' }}"
+           href="{{ route('dashboard.billing.creditcard.edit') }}"><span class="fa fa-credit-card fa-fw"></span> Carte de crédit</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {{ Request::route()->getName() === 'dashboard.billing.discount.edit' ? 'active' : '' }}"
+           href="{{ route('dashboard.billing.discount.edit') }}"><span class="fa fa-dollar fa-fw"></span> Réductions</a>
     </li>
     <li class="subtitle">Autre</li>
     <li class="nav-item">

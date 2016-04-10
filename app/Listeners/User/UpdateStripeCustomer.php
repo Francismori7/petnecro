@@ -27,7 +27,7 @@ class UpdateStripeCustomer implements ShouldQueue
     {
         $customer = $event->user->asStripeCustomer();
         $customer->email = $event->user->email;
-        $customer->description = "{$event->user->username} (" . $event->user->profile->full_name ?? 'Aucun profil' . ')';
+        $customer->description = "{$event->user->username} (" . ($event->user->profile->full_name ?? 'Aucun profil') . ')';
         $customer->save();
     }
 }
