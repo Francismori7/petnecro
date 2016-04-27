@@ -29,7 +29,7 @@ class Authenticate
             }
         }
 
-        if (!Auth::guard($guard)->user()->hasFilledProfile() &&
+        if (!Auth::guard($guard)->user()->has_filled_profile &&
             !str_contains($request->route()->getName(), 'dashboard')
         ) {
             return redirect()->route('dashboard.edit');

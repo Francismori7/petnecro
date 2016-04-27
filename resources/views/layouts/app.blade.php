@@ -5,7 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ trans('pages.application.title') }} - @yield('title')</title>
+    <title>
+        @hasSection('title')
+            {{ trans('pages.application.title') }} - @yield('title')
+        @else
+            {{ trans('pages.application.title') }}
+        @endif
+    </title>
 
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" rel='stylesheet'
@@ -13,9 +19,11 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
 
     <!-- Styles -->
-    <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">
+
+    <meta name="token" content="{{ csrf_token() }}">
 </head>
-<body id="app-layout">
+<body id="app">
     <nav class="navbar navbar-light bg-faded">
         <div class="container">
             <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse"
@@ -55,7 +63,8 @@
                         <li class="nav-item dropdown">
                             <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button"
                                aria-expanded="false">
-                                {{ Auth::user()->hasFilledProfile() ? Auth::user()->profile->first_name : Auth::user()->username }}<span class="caret"></span>
+                                {{ Auth::user()->has_filled_profile ? Auth::user()->profile->first_name : Auth::user()->username }}
+                                <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" role="menu">
@@ -73,10 +82,10 @@
         </div>
     </nav>
 
-    @yield('content')
+@yield('content')
 
-    <!-- JavaScript -->
-    <script src="{{ elixir('js/main.js') }}"></script>
+<!-- JavaScript -->
+    <script src="/js/main.js"></script>
 
     @stack('scripts')
 </body>

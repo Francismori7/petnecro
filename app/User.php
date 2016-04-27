@@ -66,7 +66,14 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function hasFilledProfile()
+    protected $appends = [
+        'maximum_pets',
+        'has_filled_profile',
+        'gravatar_link',
+        'gravatar_link_small',
+    ];
+
+    public function getHasFilledProfileAttribute()
     {
         return (bool)$this->profile;
     }
@@ -84,14 +91,21 @@ class User extends Authenticatable
     /**
      * Returns the profile picture link for the user.
      *
-     * @see http://en.gravatar.com/site/implement/images/php/
-     *
-     * @param int $size
      * @return string
      */
-    public function gravatarLink($size = 100)
+    public function getGravatarLinkAttribute()
     {
-        return 'https://www.gravatar.com/avatar/' . md5(strtolower(trim($this->email))) . '?d=retro&r=g&s=' . $size;
+        return 'https://www.gravatar.com/avatar/' . md5(strtolower(trim($this->email))) . '?d=retro&r=g&s=100';
+    }
+
+    /**
+     * Returns the profile picture link for the user.
+     *
+     * @return string
+     */
+    public function getGravatarLinkSmallAttribute()
+    {
+        return 'https://www.gravatar.com/avatar/' . md5(strtolower(trim($this->email))) . '?d=retro&r=g&s=30';
     }
 
     /**
@@ -107,12 +121,11 @@ class User extends Authenticatable
     /**
      * $this->maximum_pets
      *
-     * @param $value
-     * @return
+     * @return int
      */
-    public function getMaximumPetsAttribute($value)
+    public function getMaximumPetsAttribute()
     {
-        return $value;
+        return $this->subscription()->quantity ?? 0;
     }
 
     public function taxPercentage()

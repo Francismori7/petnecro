@@ -54,6 +54,10 @@ class Profile extends Model
         'country',
     ];
 
+    protected $appends = [
+        'full_name'
+    ];
+
     /**
      * The profile belongs to a user.
      *

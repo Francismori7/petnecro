@@ -21,15 +21,9 @@ class DashboardController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(Guard $auth)
+    public function index()
     {
-        /** @var User $user */
-        $user = $auth->user();
-        $profile = $user->profile;
-        $petsCount = $user->pets()->count();
-        $maxPetsCount = $user->subscription()->quantity ?? 0;
-
-        return view('dashboard.index')->with(compact('user', 'profile', 'petsCount', 'maxPetsCount'));
+        return view('dashboard.index');
     }
 
     public function editProfile(Guard $auth)
